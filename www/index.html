@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+      <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+      <script src="components/loader.js"></script>
+      <script src="lib/onsenui/js/onsenui.min.js"></script>
+      <link rel="stylesheet" href="components/loader.css">
+      <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+      <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+      <link rel="stylesheet" href="css/style.css">
+      <script>
+         ons.ready(function() {
+            document.querySelector('#myNavigator').resetToPage("homepage.html");
+         });
+      </script>
+   </head>
+   <body>
+      <ons-navigator id="myNavigator" page="homepage.html"></ons-navigator>
+      <ons-template id="homepage.html">
+         <ons-page id="homepage">
+            <ons-toolbar>
+               <div class="center"></div>
+               <div class="right">
+                  <ons-toolbar-button>
+                     <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+                  </ons-toolbar-button>
+               </div>
+            </ons-toolbar>
+            <p style="text-align: center">
+               <ons-button id="btn_home_maps" modifier="default" ripple>Góp Ý</ons-button>
+            </p>
+			<p style="text-align: center">
+			   <ons-button id="btn_home_news" modifier="cta" ripple>Tra Cứu</ons-button>
+            </p>
+			<p style="text-align: center">
+               <ons-button id="btn_home_report" modifier="cta" ripple>Thống Kê</ons-button>
+            </p>
+			<p style="text-align: center">
+			   <ons-button id="btn_home_help" modifier="cta" ripple>Trợ Giúp</ons-button>
+            </p>
+			<p style="text-align: center">
+               <ons-button id="btn_home_settings" modifier="cta" ripple>Cài Đặt</ons-button>
+            </p>			
+         </ons-page>
+      </ons-template>
+      <ons-template id="main.html">
+		<ons-page id="main">
+			<ons-tabbar animation="slide">
+				<ons-tab id="tabMaps" icon="home" label="Góp Ý" page="maps.html">
+				</ons-tab>
+				<ons-tab id="tabNews" icon="md-settings" label="Tra Cứu" page="news.html">
+				</ons-tab>
+				<ons-tab id="tabReport" icon="md-menu" label="Thống Kê" page="report.html">
+				</ons-tab>
+				<ons-tab id="tabHelp" icon="md-settings" label="Trợ Giúp" page="help.html">
+				</ons-tab>
+				<ons-tab id="tabSettings" icon="md-settings" label="Cài Đặt" page="setting.html">
+				</ons-tab>
+			</ons-tabbar>
+		</ons-page>
+      </ons-template>
+      <ons-template id="maps.html">
+         <ons-page>
+            <ons-toolbar>				
+               <div class="left">
+                  <ons-toolbar-button onclick="goHome()">
+                     <ons-icon icon="md-home"></ons-icon>
+                  </ons-toolbar-button>
+               </div>
+               <div class="center"><b>Góp Ý Phản Ánh</b></div>
+            </ons-toolbar>
+            <p style="text-align: center;">
+               This is the first page.
+            </p>
+         </ons-page>
+      </ons-template>
+      <ons-template id="news.html">
+         <ons-page>
+            <ons-toolbar>
+				<div class="left">
+                  <ons-toolbar-button onclick="goHome()">
+                     <ons-icon icon="md-home"></ons-icon>
+                  </ons-toolbar-button>
+               </div>
+               <div class="center"><b>Tra Cứu Phản Ánh</b></div>
+            </ons-toolbar>
+            <p style="text-align: center;">
+               This is the first page.
+            </p>
+         </ons-page>
+      </ons-template>
+      <ons-template id="report.html">
+         <ons-page>
+            <ons-toolbar>
+				<div class="left">
+                  <ons-toolbar-button onclick="goHome()">
+                     <ons-icon icon="md-home"></ons-icon>
+                  </ons-toolbar-button>
+               </div>
+               <div class="center"><b>Thống Kê</b></div>
+            </ons-toolbar>
+            <p style="text-align: center;">
+               This is the second page.
+            </p>
+         </ons-page>
+      </ons-template>
+      <ons-template id="help.html">
+         <ons-page>
+            <ons-toolbar>
+				<div class="left">
+                  <ons-toolbar-button onclick="goHome()">
+                     <ons-icon icon="md-home"></ons-icon>
+                  </ons-toolbar-button>
+               </div>
+               <div class="center"><b>Trợ Giúp</b></div>
+            </ons-toolbar>
+            <p style="text-align: center;">
+               This is the second page.
+            </p>
+         </ons-page>
+      </ons-template>
+      <ons-template id="setting.html">
+         <ons-page>
+            <ons-toolbar>
+				<div class="left">
+                  <ons-toolbar-button onclick="goHome()">
+                     <ons-icon icon="md-home"></ons-icon>
+                  </ons-toolbar-button>
+               </div>
+               <div class="center"><b>Cài Đặt</b></div>
+            </ons-toolbar>
+            <p style="text-align: center;">
+               This is the second page.
+            </p>
+         </ons-page>
+      </ons-template>
+      <script>
+		function goHome()
+		{
+			document.querySelector('#myNavigator').resetToPage("homepage.html");
+		}
+		
+		function loadMainMenu(activeTab)
+		{
+			document.querySelector('#myNavigator').pushPage('main.html', {data: {tab: activeTab}});
+		}
+        document.addEventListener('init', function(event) {
+			var page = event.target;
+			if (page.matches('#homepage')) {
+				page.querySelector('ons-toolbar .center').innerHTML = '1022';
+				page.querySelector('#btn_home_maps').onclick = function() {
+					loadMainMenu(0);
+				};
+				page.querySelector('#btn_home_news').onclick = function() {         		
+					loadMainMenu(1);
+				};
+				page.querySelector('#btn_home_report').onclick = function() {
+					loadMainMenu(2);
+				};
+				page.querySelector('#btn_home_help').onclick = function() {
+					loadMainMenu(3);
+				};
+				page.querySelector('#btn_home_settings').onclick = function() {
+					loadMainMenu(4);
+				};
+			}
+			else if (page.matches('#main')) {						
+				page.querySelector("ons-tabbar").setActiveTab(page.data.tab);
+			}
+         });
+      </script>
+   </body>
+</html>
